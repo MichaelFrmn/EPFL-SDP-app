@@ -3,6 +3,7 @@ package com.github.freeman.bootcamp;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
@@ -27,7 +28,7 @@ public class MainActivityTest {
     @Test
     public void myFirstTest() {
         Intents.init();
-        //onView(ViewMatchers.withId(R.id.mainName)).perform(click(), clearText(),typeText("bob"));
+        onView(ViewMatchers.withId(R.id.mainName)).perform(click(), clearText(),typeText("bob"), closeSoftKeyboard());
         onView(ViewMatchers.withId(R.id.mainSubmitButton)).perform(click());
         intended(allOf(IntentMatchers.hasComponent(GreetingActivity.class.getName())));
         Intents.release();
